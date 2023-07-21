@@ -20,7 +20,7 @@
                 $"{mathBalls}\nбалы по физике:{physicsBalls}") ;
             Console.ReadKey();
 
-            Console.WriteLine($"Сумма балов{summaBalls}\nсреднее арифметическое{averages}");
+            Console.WriteLine($"Сумма балов:{summaBalls}\nсреднее арифметическое:{averages}");
             Console.ReadKey();
         }
     }
