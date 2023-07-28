@@ -22,6 +22,7 @@ namespace Task_4_2
 
             Random random = new Random();
 
+            Console.WriteLine("Первая матрица");
             for (int i = 0; i < lines; i++)
             {
                 for (int j = 0; j < columns; j++)
@@ -29,15 +30,6 @@ namespace Task_4_2
                     matrixFirst[i, j] = random.Next(0, 101);
                     matrixSecond[i, j] = random.Next(0, 101);
                     matrixThird[i, j] = matrixFirst[i, j] + matrixSecond[i, j];
-                }
-            }
-
-            Console.WriteLine("Первая матрица");
-            for (int i = 0; i < lines; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    
                     Console.Write($"{matrixFirst[i, j],5}");
                 }
                 Console.WriteLine();
