@@ -11,12 +11,10 @@ namespace Task_7_8
         static void Main(string[] args)
         {
            Repository repository = new Repository();
-            Worker [] w = repository.GetAllWorkers();
-            for (int i = 0;w.Length > i;i++) 
-            {
-                Console.WriteLine(w[i]);
-            }
+            DateTime date1 = new DateTime(2023,07,31);
+            DateTime date2 = new DateTime(2023,08,01);
             
+            repository.PrintAll();
             Console.ReadLine();
             
         }
