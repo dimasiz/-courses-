@@ -23,7 +23,7 @@ namespace Task_7_8
             {
                 using (StreamReader reader = new StreamReader(path))
                 {
-                   
+                   workers.Clear();
                     string[] words = { };
                    for (int i = 0; i < count ; i++)
                     {
@@ -56,7 +56,7 @@ namespace Task_7_8
 
             public Worker GetWorkerById(int Id)
             {
-            int count = File.ReadAllLines(path).Length;
+            
             List <Worker> IdWorkers = GetAllWorkers();
             Worker worker = new Worker();
 
@@ -91,11 +91,7 @@ namespace Task_7_8
                 }
 
             }
-            //1#31.07.2023 21:39:13#Иванов Иван Иванович#25#176#05.05.1992#город Москва
-            //2#31.07.2023 21:47:33#Шведко Дмитрий Иванович#18#190#21.12.2004#Город Гродно
-            //3#31.07.2023 22:26:00#Алексеев Алексей Иванович#24#176#05.11.1980#город Томск
-            //4#31.07.2023 22:27:22#Колесник Андрей Николаевич#21#156#05.02.2002#Город Минск
-            //5#31.07.2023 22:30:43#Добровольская Ксения Андреевна#17#167#25.06.2005#Город Брест
+   
             File.WriteAllText(path, string.Empty);
             using (StreamWriter writer = new StreamWriter(path))
             {
@@ -167,12 +163,89 @@ namespace Task_7_8
         public void PrintAll()
         {
             List<Worker> IdWorkers = GetAllWorkers();
-            Worker worker = new Worker();
 
             for (int i = 0; i < IdWorkers.Count; i++)
             {
                 IdWorkers[i].Print();
             }
+        }
+        public void SortWorkerAge()
+        {
+
+            List<Worker> SortWorkers = GetAllWorkers();
+            Worker MinWorker = new Worker();
+            MinWorker = SortWorkers[0];
+            int len = SortWorkers.Count;
+            for (int i = 0; i < SortWorkers.Count; i++)
+            {
+                for (int j = i + 1; j < len; j++)
+                {
+                    if (SortWorkers[i].Age > SortWorkers[j].Age)
+                    {
+                        MinWorker = SortWorkers[i];
+                        SortWorkers[i] = SortWorkers[j];
+                        SortWorkers[j] = MinWorker;
+                    }
+                }
+            }
+
+            for (int i = 0; i < SortWorkers.Count; i++)
+            {
+                SortWorkers[i].Print();
+            }
+            
+        }
+        public void SortWorkerHeight()
+        {
+
+            List<Worker> SortWorkers = GetAllWorkers();
+            Worker MinWorker = new Worker();
+            MinWorker = SortWorkers[0];
+            int len = SortWorkers.Count;
+            for (int i = 0; i < SortWorkers.Count; i++)
+            {
+                for (int j = i + 1; j < len; j++)
+                {
+                    if (SortWorkers[i].Height > SortWorkers[j].Height)
+                    {
+                        MinWorker = SortWorkers[i];
+                        SortWorkers[i] = SortWorkers[j];
+                        SortWorkers[j] = MinWorker;
+                    }
+                }
+            }
+
+            for (int i = 0; i < SortWorkers.Count; i++)
+            {
+                SortWorkers[i].Print();
+            }
+
+        }
+        public void SortWorkerDate()
+        {
+
+            List<Worker> SortWorkers = GetAllWorkers();
+            Worker MinWorker = new Worker();
+            MinWorker = SortWorkers[0];
+            int len = SortWorkers.Count;
+            for (int i = 0; i < SortWorkers.Count; i++)
+            {
+                for (int j = i + 1; j < len; j++)
+                {
+                    if (SortWorkers[i].Time > SortWorkers[j].Time)
+                    {
+                        MinWorker = SortWorkers[i];
+                        SortWorkers[i] = SortWorkers[j];
+                        SortWorkers[j] = MinWorker;
+                    }
+                }
+            }
+
+            for (int i = 0; i < SortWorkers.Count; i++)
+            {
+                SortWorkers[i].Print();
+            }
+
         }
     }
 }

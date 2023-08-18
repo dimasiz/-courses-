@@ -10,12 +10,74 @@ namespace Task_7_8
     {
         static void Main(string[] args)
         {
-           Repository repository = new Repository();
-            DateTime date1 = new DateTime(2023,07,31);
-            DateTime date2 = new DateTime(2023,08,01);
+            Repository repository = new Repository();
+            bool flag = true;
             
-            repository.PrintAll();
-            Console.ReadLine();
+            while (flag)
+            { 
+            Console.WriteLine("1-просмотр списка всех сотрудников\n2-вызов сотрудника по Id\n3-удаление сотрудника по Id\n4-добавление сотрудника\n5-просмотор сотрудниокв по промежутку даты\n6-сортировка\n0-Выход");
+            byte chouse = byte.Parse(Console.ReadLine());
+                switch(chouse)
+                {
+                    case 1:
+                        repository.PrintAll();
+                        repository.GetAllWorkers();
+                        
+
+                        break;
+
+                    case 2:
+                    Console.WriteLine("Введите ID");
+                    int Byid = int.Parse(Console.ReadLine());
+                    repository.GetWorkerById(Byid);
+                    break;
+
+                    case 3:
+                    Console.WriteLine("Введите ID");
+                    int DeleteId = int.Parse(Console.ReadLine());
+                    repository.DeleteWorker(DeleteId); 
+                    break;
+
+                    case 4:
+                        repository.AddWorker();
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Введите дату с");
+                        DateTime dateto = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Введите дату после");
+                        DateTime dateFor = Convert.ToDateTime(Console.ReadLine());
+                        repository.GetWorkersBetweenTwoDates(dateto, dateFor);
+                        break;
+
+                    case 6:
+                        Console.WriteLine($"1-сортировка по возрасту\n2-сортировка по росту\n3-сортировка по дате записи");
+                        byte comanSort = byte.Parse(Console.ReadLine());
+                        switch (comanSort)
+                        { 
+                            case 1:
+                                repository.SortWorkerAge();
+                                break;
+
+                            case 2:
+                                repository.SortWorkerHeight();
+                                break;
+                            case 3:
+                                repository.SortWorkerDate();
+                                break;
+                        }
+                        break;
+
+                    case 0:
+                        flag = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Вы ввели неверную команду,попробуйте еще раз");
+                        break;
+                }
+            }
+            
             
         }
     }
