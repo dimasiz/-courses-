@@ -20,7 +20,6 @@ namespace Task_7_8
             this.Place = place;
         }
 
-
         public int ID { get; set; }
         public DateTime Time { get; set; }
         public string FIO { get; set; }
@@ -33,7 +32,7 @@ namespace Task_7_8
         {
             Console.WriteLine($"{this.ID} {this.Time} {this.FIO} {this.Age} {this.Height} {this.Birthday} {this.Place}");
         }
-        
+
 
 
     }

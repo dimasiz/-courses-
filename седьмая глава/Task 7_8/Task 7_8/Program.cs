@@ -12,31 +12,31 @@ namespace Task_7_8
         {
             Repository repository = new Repository();
             bool flag = true;
-            
+
             while (flag)
-            { 
-            Console.WriteLine("1-просмотр списка всех сотрудников\n2-вызов сотрудника по Id\n3-удаление сотрудника по Id\n4-добавление сотрудника\n5-просмотор сотрудниокв по промежутку даты\n6-сортировка\n0-Выход");
-            byte chouse = byte.Parse(Console.ReadLine());
-                switch(chouse)
+            {
+
+                Console.WriteLine("1-просмотр списка всех сотрудников\n2-вызов сотрудника по Id\n3-удаление сотрудника по Id\n4-добавление сотрудника\n5-просмотор сотрудниокв по промежутку даты\n6-сортировка\n0-Выход");
+                byte chouse = byte.Parse(Console.ReadLine());
+
+                switch (chouse)
                 {
                     case 1:
                         repository.PrintAll();
                         repository.GetAllWorkers();
-                        
-
                         break;
 
                     case 2:
-                    Console.WriteLine("Введите ID");
-                    int Byid = int.Parse(Console.ReadLine());
-                    repository.GetWorkerById(Byid);
-                    break;
+                        Console.WriteLine("Введите ID");
+                        int Byid = int.Parse(Console.ReadLine());
+                        repository.GetWorkerById(Byid);
+                        break;
 
                     case 3:
-                    Console.WriteLine("Введите ID");
-                    int DeleteId = int.Parse(Console.ReadLine());
-                    repository.DeleteWorker(DeleteId); 
-                    break;
+                        Console.WriteLine("Введите ID");
+                        int DeleteId = int.Parse(Console.ReadLine());
+                        repository.DeleteWorker(DeleteId);
+                        break;
 
                     case 4:
                         repository.AddWorker();
@@ -51,21 +51,7 @@ namespace Task_7_8
                         break;
 
                     case 6:
-                        Console.WriteLine($"1-сортировка по возрасту\n2-сортировка по росту\n3-сортировка по дате записи");
-                        byte comanSort = byte.Parse(Console.ReadLine());
-                        switch (comanSort)
-                        { 
-                            case 1:
-                                repository.SortWorkerAge();
-                                break;
-
-                            case 2:
-                                repository.SortWorkerHeight();
-                                break;
-                            case 3:
-                                repository.SortWorkerDate();
-                                break;
-                        }
+                        repository.ComandSort();
                         break;
 
                     case 0:
@@ -77,8 +63,8 @@ namespace Task_7_8
                         break;
                 }
             }
-            
-            
+
+
         }
     }
 }

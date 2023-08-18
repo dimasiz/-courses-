@@ -13,6 +13,7 @@ namespace Task_7_8
     class Repository
     {
         private string path = "staw.txt";
+
         private List<Worker> workers = new List<Worker>();
         public List<Worker> GetAllWorkers()
         {
@@ -23,12 +24,13 @@ namespace Task_7_8
             {
                 using (StreamReader reader = new StreamReader(path))
                 {
-                   workers.Clear();
+                    workers.Clear();
                     string[] words = { };
-                   for (int i = 0; i < count ; i++)
-                    {
 
+                    for (int i = 0; i < count; i++)
+                    {
                         words = reader.ReadLine().Split('#');
+
                         int id = int.Parse(words[0]);
                         DateTime time = Convert.ToDateTime(words[1]);
                         string fio = words[2];
@@ -36,67 +38,57 @@ namespace Task_7_8
                         int height = int.Parse(words[4]);
                         string birthday = words[5];
                         string place = words[6];
+
                         Worker worker = new Worker(id, time, fio, age, height, birthday, place);
                         workers.Add(worker);
                     }
                     reader.Close();
                     return workers;
                 }
-
             }
             else
             {
                 staw.Create();
                 Console.WriteLine("Файл был создан");
                 return null;
-
             }
         }
 
-
-            public Worker GetWorkerById(int Id)
-            {
-            
-            List <Worker> IdWorkers = GetAllWorkers();
+        public Worker GetWorkerById(int Id)
+        {
+            List<Worker> IdWorkers = GetAllWorkers();
             Worker worker = new Worker();
 
             for (int i = 0; i < IdWorkers.Count; i++)
             {
-
-                if(IdWorkers[i].ID == Id)
+                if (IdWorkers[i].ID == Id)
                 {
                     worker = IdWorkers[i];
                     worker.Print();
-                   
                 }
-                
             }
             return worker;
 
-            }
+        }
 
         public void DeleteWorker(int Id)
         {
-            
             List<Worker> IdWorkers = GetAllWorkers();
-     
+
             for (int i = 0; i < IdWorkers.Count; i++)
             {
-
                 if (IdWorkers[i].ID == Id)
                 {
                     IdWorkers.RemoveAt(i);
                     break;
-
                 }
-
             }
-   
+
             File.WriteAllText(path, string.Empty);
+
             using (StreamWriter writer = new StreamWriter(path))
             {
-                
-                for (int i = 0; i < IdWorkers.Count ; i++)
+                for (int i = 0; i < IdWorkers.Count; i++)
                 {
                     int id = IdWorkers[i].ID;
                     DateTime time = IdWorkers[i].Time;
@@ -105,6 +97,7 @@ namespace Task_7_8
                     int height = IdWorkers[i].Height;
                     string birthday = IdWorkers[i].Birthday;
                     string place = IdWorkers[i].Place;
+
                     writer.WriteLine($"{id}#{time}#{fio}#{age}#{height}#{birthday}#{place}");
                 }
                 writer.Close();
@@ -132,32 +125,27 @@ namespace Task_7_8
             Console.WriteLine("Введите место рождения");
             string place = Console.ReadLine();
 
-            Worker  worker = new Worker (id, time, fio, age, height, birthday, place);
+            Worker worker = new Worker(id, time, fio, age, height, birthday, place);
 
-            using (StreamWriter writer = new StreamWriter(path,true))
-            { 
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
                 writer.WriteLine($"{id}#{time}#{fio}#{age}#{height}#{birthday}#{place}");
                 writer.Close();
             }
         }
         public List<Worker> GetWorkersBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
         {
-            int count = File.ReadAllLines(path).Length;
             List<Worker> IdWorkers = GetAllWorkers();
             List<Worker> SortedWorker = new List<Worker>();
 
             for (int i = 0; i < IdWorkers.Count; i++)
             {
-
                 if ((dateFrom < IdWorkers[i].Time) && (IdWorkers[i].Time < dateTo))
                 {
                     SortedWorker.Add(IdWorkers[i]);
                     IdWorkers[i].Print();
                 }
-
             }
-
-            
             return SortedWorker;
         }
         public void PrintAll()
@@ -171,11 +159,12 @@ namespace Task_7_8
         }
         public void SortWorkerAge()
         {
-
             List<Worker> SortWorkers = GetAllWorkers();
             Worker MinWorker = new Worker();
+
             MinWorker = SortWorkers[0];
             int len = SortWorkers.Count;
+
             for (int i = 0; i < SortWorkers.Count; i++)
             {
                 for (int j = i + 1; j < len; j++)
@@ -193,15 +182,16 @@ namespace Task_7_8
             {
                 SortWorkers[i].Print();
             }
-            
+
         }
         public void SortWorkerHeight()
         {
-
             List<Worker> SortWorkers = GetAllWorkers();
             Worker MinWorker = new Worker();
+
             MinWorker = SortWorkers[0];
             int len = SortWorkers.Count;
+
             for (int i = 0; i < SortWorkers.Count; i++)
             {
                 for (int j = i + 1; j < len; j++)
@@ -223,11 +213,12 @@ namespace Task_7_8
         }
         public void SortWorkerDate()
         {
-
             List<Worker> SortWorkers = GetAllWorkers();
             Worker MinWorker = new Worker();
+
             MinWorker = SortWorkers[0];
             int len = SortWorkers.Count;
+
             for (int i = 0; i < SortWorkers.Count; i++)
             {
                 for (int j = i + 1; j < len; j++)
@@ -244,6 +235,26 @@ namespace Task_7_8
             for (int i = 0; i < SortWorkers.Count; i++)
             {
                 SortWorkers[i].Print();
+            }
+
+        }
+        public void ComandSort()
+        {
+            Console.WriteLine($"1-сортировка по возрасту\n2-сортировка по росту\n3-сортировка по дате записи");
+            byte comanSort = byte.Parse(Console.ReadLine());
+            switch (comanSort)
+            {
+                case 1:
+                    SortWorkerAge();
+                    break;
+
+                case 2:
+                    SortWorkerHeight();
+                    break;
+
+                case 3:
+                    SortWorkerDate();
+                    break;
             }
 
         }
