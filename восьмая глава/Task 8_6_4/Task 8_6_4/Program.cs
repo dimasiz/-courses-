@@ -48,14 +48,7 @@ namespace Task_8_6_4
             writer.WriteEndElement();
 
             writer.WriteEndElement();
-
-
-
-
-            
             writer.WriteEndDocument();
-
-
 
             writer.Close();
         }
@@ -79,7 +72,6 @@ namespace Task_8_6_4
             Console.WriteLine("Введите домашний телефон");
             string flatPhone = Console.ReadLine();
             
-
             XmlFile(name,street,numberHome,numberFlat, mobilePhone, flatPhone);
         }
     }
