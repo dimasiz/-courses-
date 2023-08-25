@@ -25,20 +25,19 @@ namespace Task_8_6_3
                     flag = false;
                     break;
                 }
+
                 number = int.Parse(enter);
 
                 if (numbers.Contains(number))
                 {
-                    
                     Console.WriteLine("число уже вводилось ранее");
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Ваша число успешно добавлено");
                 }
 
                 numbers.Add(number);
-
             }
         }
     }
