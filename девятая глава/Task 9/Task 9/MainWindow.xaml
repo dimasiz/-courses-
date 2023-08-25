@@ -1,0 +1,32 @@
+﻿<Window x:Class="Task_9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task_9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="TextBox" 
+                 HorizontalAlignment="Left"
+                 Margin="458,72,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="307" 
+                 Height="36"/>
+
+        <Button Content="Разбить строку в лист "
+                HorizontalAlignment="Left"
+                Margin="601,317,0,0" 
+                VerticalAlignment="Top" 
+                Height="65" Width="189" Click="Button_Click_1" Background="#FF28C543" FontFamily="Arial" FontSize="18"/>
+        <ListBox x:Name="Listbox" 
+                 d:ItemsSource="{d:SampleData ItemCount=0}" Margin="10,39,533,10"/>
+        <Button Content="создать обратную строку" HorizontalAlignment="Left" Margin="361,317,0,0" VerticalAlignment="Top" Height="65" Width="223" Background="#FFE3AE06" FontFamily="Arial" FontSize="18" Click="Button_Click"/>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="458,199,0,0" VerticalAlignment="Top" Width="307"/>
+        <Label Content="Лист" HorizontalAlignment="Left" Margin="24,13,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите текс" HorizontalAlignment="Left" Margin="458,39,0,0" VerticalAlignment="Top" Width="97"/>
+        <Label Content="Перевернутый текст" HorizontalAlignment="Left" Margin="458,173,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
